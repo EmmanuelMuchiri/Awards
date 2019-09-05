@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'award',
     'bootstrap4',
     'tinymce',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
