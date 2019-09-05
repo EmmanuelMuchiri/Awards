@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
 import datetime as dt
@@ -21,3 +22,21 @@ def index(request):
         return redirect('create-profile')
         
     return render(request,'index.html',{"profile":profile})
+
+
+@login_required(login_url='/accounts/login/')
+def create_profile(request):
+    current_user = request.user
+    if request.method=='POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.username = current_user
+
+            profile.save()
+        return redirect('Index')
+    else:
+        form=ProfileForm()
+
+    return render(request,'create_profile.html',{"form":form})
+
