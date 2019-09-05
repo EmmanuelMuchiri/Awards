@@ -38,5 +38,5 @@ def create_profile(request):
     else:
         form=ProfileForm()
 
-    return render(request,'create_profile.html',{"form":form})
+    return render(request,'new_profile.html',{"form":form})
 
