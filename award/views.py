@@ -51,4 +51,20 @@ def project(request,project_id):
     return render(request,"projects/projects.html", {"project":project})
 
 
+@login_required(login_url='/accounts/login/')
+def new_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewprojectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.editor = current_user
+            project.save()
+        return redirect('newsToday')
+
+    else:
+        form = NewprojectForm()
+    return render(request, 'new_project.html', {"form": form})
+
+
 

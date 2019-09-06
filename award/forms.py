@@ -5,3 +5,11 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
         exclude=['username']
+    
+class NewProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['owner', 'pub_date']
+        # widgets = {
+        #     'tags': forms.CheckboxSelectMultiple(),
+        # }

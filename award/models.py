@@ -21,3 +21,5 @@ class Project(models.Model):
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
     project_image = models.ImageField(upload_to='projects/', blank=True)
+
+    
