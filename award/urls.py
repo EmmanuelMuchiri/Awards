@@ -5,10 +5,10 @@ from django.conf import settings
 
 
 urlpatterns=[
-    # url('^$',views.welcome,name = 'welcome'),
     url(r'^$',views.index,name='index'),
     url(r'^user/(?P<username>\w{0,50})',views.profile,name='profile'),
     url(r'^create/profile$',views.create_profile, name='new-profile'),
+    url(r'^profile/',views.profile, name='profile'),
 ]
 
 if settings.DEBUG:
