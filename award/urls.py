@@ -5,11 +5,12 @@ from django.conf import settings
 
 
 urlpatterns=[
-    url(r'^$',views.index,name='index'),
+    url(r'^$',views.index,name='Projects'),
     url(r'^user/(?P<username>\w{0,50})',views.profile,name='profile'),
     url(r'^create/profile$',views.create_profile, name='new-profile'),
     url(r'^profile/',views.profile, name='profile'),
-    url(r'^project/(\d+)',views.project,name ='project')
+    url(r'^project/(\d+)',views.project,name ='project'),
+    url(r'^new/project$', views.new_project, name='new-project')
 
 ]
 

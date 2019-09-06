@@ -13,11 +13,12 @@ def index(request):
             return redirect('/accounts/login/')
         current_user = request.user
         profile =Profile.objects.get(username=current_user)
+        projects = Project.print_all()
         print(current_user)
     except ObjectDoesNotExist:
         return redirect('new-profile')
 
-    return render(request,'index.html',{"profile":profile})
+    return render(request,'index.html',{"profile":profile,"projects":projects})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -55,15 +56,15 @@ def project(request,project_id):
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
-        form = NewprojectForm(request.POST, request.FILES)
+        form = NewProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit=False)
-            project.editor = current_user
+            project.owner = current_user
             project.save()
-        return redirect('newsToday')
+        return redirect('Projects')
 
     else:
-        form = NewprojectForm()
+        form = NewProjectForm()
     return render(request, 'new_project.html', {"form": form})
 
 
