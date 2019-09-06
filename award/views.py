@@ -45,10 +45,10 @@ def create_profile(request):
 @login_required(login_url='/accounts/login/')
 def project(request,project_id):
     try:
-        article = Project.objects.get(id = project_id)
+        project = Project.objects.get(id = project_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"projects/projects.html", {"article":article})
+    return render(request,"projects/projects.html", {"project":project})
 
 
 

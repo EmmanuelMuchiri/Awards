@@ -9,6 +9,8 @@ urlpatterns=[
     url(r'^user/(?P<username>\w{0,50})',views.profile,name='profile'),
     url(r'^create/profile$',views.create_profile, name='new-profile'),
     url(r'^profile/',views.profile, name='profile'),
+    url(r'^project/(\d+)',views.project,name ='project')
+
 ]
 
 if settings.DEBUG:
