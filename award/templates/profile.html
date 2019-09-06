@@ -17,11 +17,11 @@
 
 <div class="text-center">
     <div class="profile-image">
-        <img src="{{profile.profpic.url}}" class="gallery-image" alt="" width=30 height=30>
+        <img src="{{profile.profpic.url}}" class="img-rounded" alt="Profile Picture" width="304" height="236" ><hr>
     </div>
-    <p style="font-size: 22px; font-weight:bold;margin:auto; padding:2px;">{{profile.username}}</p>
-    <p class="card-text" style="font-size:16px;font-weight:bold;">{{profile.description |safe}}</p>
-    <p class="card-text" style="font-size:14px;color:maroon;font-weight:bold;">{{profile.email}}</p>
+    <p style="font-size: 22px; font-weight:bold;margin:auto; padding:2px;">UserName: {{profile.username}}</p><hr>
+    <h4 style="font-size: 22px; font-weight:bold;margin:auto; padding:2px;">Bio: {{profile.bio|safe}}</h4><hr>
+    <p style="font-size:14px;color:blue;font-weight:bold;">Contacts : {{profile.email}}</p>
 
 </div>
 
