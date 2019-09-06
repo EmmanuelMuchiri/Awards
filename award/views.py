@@ -6,12 +6,8 @@ from .forms import *
 import datetime as dt
 
 # Create your views here.
-def welcome(request):
-    return render(request, 'welcome.html')
-
-# Create your views here.
+@login_required(login_url='/accounts/login/')
 def index(request):
-    date = dt.date.today()
     try:
         if not request.user.is_authenticated:
             return redirect('/accounts/login/')
@@ -19,11 +15,16 @@ def index(request):
         profile =Profile.objects.get(username=current_user)
         print(current_user)
     except ObjectDoesNotExist:
-        return redirect('create-profile')
-        
+        return redirect('new-profile')
+
     return render(request,'index.html',{"profile":profile})
 
-
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    current_user = request.user
+    profile =Profile.objects.get(username=current_user)
+    return render(request,'profile.html',{"profile":profile})
+    
 @login_required(login_url='/accounts/login/')
 def create_profile(request):
     current_user = request.user
@@ -34,9 +35,11 @@ def create_profile(request):
             profile.username = current_user
 
             profile.save()
-        return redirect('Index')
+        return redirect('index')
     else:
         form=ProfileForm()
 
     return render(request,'new_profile.html',{"form":form})
+
+
 
