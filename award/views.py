@@ -48,6 +48,28 @@ def create_profile(request):
     return render(request,'new_profile.html',{"form":form})
 
 
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+    current_user = request.user
+    profile =Profile.objects.get(username=current_user)
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_projects = Project.search_project(search_term)
+        message=f"{search_term}"
+
+        print(searched_projects)
+
+        return render(request,'search.html',{"message":message,"projects":searched_projects,"profile":profile})
+
+    else:
+        message="You haven't searched for any term"
+        return render(request,'search.html',{"message":message})
+
+
+
+
+
 @login_required(login_url='/accounts/login/')
 def project(request,project_id):
     try:
