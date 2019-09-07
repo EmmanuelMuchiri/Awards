@@ -37,9 +37,9 @@ class Project(models.Model):
     def save_project(self):
         self.save()
 
-        @classmethod
+    @classmethod
     def search_project(cls,search_term):
-        projects = cls.objects.filter(Q(username__username=search_term) | Q(title__icontains=search_term) | Q(country__countries=search_term) | Q(overall_score__icontains=search_term))
+        projects = cls.objects.filter(title__icontains=search_term)
         return projects
 
 

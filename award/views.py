@@ -3,6 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.db.models import Q
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import *
@@ -60,11 +61,11 @@ def search_results(request):
 
         print(searched_projects)
 
-        return render(request,'search.html',{"message":message,"projects":searched_projects,"profile":profile})
+        return render(request,'projects/search.html',{"message":message,"projects":searched_projects,"profile":profile})
 
     else:
         message="You haven't searched for any term"
-        return render(request,'search.html',{"message":message})
+        return render(request,'projects/search.html',{"message":message})
 
 
 

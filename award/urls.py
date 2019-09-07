@@ -12,6 +12,7 @@ urlpatterns=[
     url(r'^project/(\d+)',views.project,name ='project'),
     url(r'^new/project$', views.new_project, name='new-project'),
     url(r'^project_site/(\d+)',views.project_site,name='project_site'),
+    url(r'^search/',views.search_results, name='search_results'),
 # API EndPoints URL for Profile and Projects which people can consume
 
     url(r'^api/profiles/$', views.ProfileList.as_view()),
