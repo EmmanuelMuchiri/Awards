@@ -15,17 +15,6 @@ from .email import send_welcome_email
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
-    if request.method == 'POST':
-        form = SubscriptionForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['your_name']
-            email = form.cleaned_data['email']
-
-            recipient = Subscribers(name = name,email =email)
-            recipient.save()
-            send_welcome_email(name,email)
-
-            HttpResponseRedirect('index')
     try:
         if not request.user.is_authenticated:
             return redirect('/accounts/login/')
@@ -33,6 +22,7 @@ def index(request):
         profile =Profile.objects.get(username=current_user)
         projects = Project.print_all()
         print(current_user)
+        
     except ObjectDoesNotExist:
         return redirect('new-profile')
 
