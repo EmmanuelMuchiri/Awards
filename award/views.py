@@ -68,4 +68,63 @@ def new_project(request):
     return render(request, 'new_project.html', {"form": form})
 
 
+@login_required(login_url='/accounts/login/')
+def project_site(request,project_site_id):
+    current_user = request.user
+    profile =Profile.objects.get(username=current_user)
+
+    try:
+        project = Project.objects.get(id=project_site_id)
+    except:
+        raise ObjectDoesNotExist()
+
+    try:
+        rates = Rating.objects.filter(project_id=project_site_id)
+        design = Rating.objects.filter(project_id=site_id).values_list('design',flat=True)
+        usability = Rating.objects.filter(project_id=site_id).values_list('usability',flat=True)
+        content = Rating.objects.filter(project_id=site_id).values_list('content',flat=True)
+        totals_for_design=0
+        totals_for_usability=0
+        totals_for_content = 0
+        print(design)
+        for rate in design:
+            totals_for_design+=rate
+        print(totals_for_design)
+
+        for rate in usability:
+            totals_for_usability+=rate
+        print(totals_for_usability)
+
+        for rate in content:
+            totals_for_content+=rate
+        print(totals_for_content)
+
+        average_score=(totals_for_design+totals_for_usability+totals_for_content)/3
+
+        print(average_score)
+
+        project.design = totals_for_design
+        project.usability = totals_for_usability
+        project.content = totals_for_content
+        project.average_score = average_score
+
+        project.save()
+
+    except:
+        return None
+
+    if request.method =='POST':
+        form = RatesForm(request.POST,request.FILES)
+        if form.is_valid():
+            rating = form.save(commit=False)
+            rating.project= project
+            rating.profile = profile
+            rating.average_score = (rating.design+rating.usability+rating.content)/3
+            rating.save()
+    else:
+        form = RatesForm()
+
+    return render(request,"site.html",{"project":project,"profile":profile,"ratings":ratings,"form":form})
+
+
 
