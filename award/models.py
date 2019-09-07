@@ -51,3 +51,9 @@ class Rating(models.Model):
     overall_rating = models.IntegerField(blank=True,default=0)
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+
+
+
+class Subscribers(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()

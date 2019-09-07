@@ -25,7 +25,7 @@ def index(request):
             recipient.save()
             send_welcome_email(name,email)
 
-            HttpResponseRedirect('news_today')
+            HttpResponseRedirect('index')
     try:
         if not request.user.is_authenticated:
             return redirect('/accounts/login/')
