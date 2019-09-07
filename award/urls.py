@@ -11,7 +11,11 @@ urlpatterns=[
     url(r'^profile/',views.profile, name='profile'),
     url(r'^project/(\d+)',views.project,name ='project'),
     url(r'^new/project$', views.new_project, name='new-project'),
-    url(r'^project_site/(\d+)',views.project_site,name='project_site')
+    url(r'^project_site/(\d+)',views.project_site,name='project_site'),
+# API EndPoints URL for Profile and Projects
+
+    url(r'^api/profiles/$', views.ProfileList.as_view()),
+    url(r'^api/projects/$', views.ProjectList.as_view())
 
 ]
 

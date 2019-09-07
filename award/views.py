@@ -3,9 +3,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.models import User
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import *
 from .forms import *
 import datetime as dt
+from .serializer import *
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -128,5 +131,15 @@ def project_site(request,project_site_id):
 
     return render(request,"projects/project_site.html",{"project":project,"profile":profile,"rates":rates,"form":form})
 
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
 
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
 
