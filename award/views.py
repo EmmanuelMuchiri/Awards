@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse,Http404,HttpResponseRedirect
+from django.contrib.auth.models import User
 from .models import *
 from .forms import *
 import datetime as dt
@@ -80,9 +82,9 @@ def project_site(request,project_site_id):
 
     try:
         rates = Rating.objects.filter(project_id=project_site_id)
-        design = Rating.objects.filter(project_id=site_id).values_list('design',flat=True)
-        usability = Rating.objects.filter(project_id=site_id).values_list('usability',flat=True)
-        content = Rating.objects.filter(project_id=site_id).values_list('content',flat=True)
+        design = Rating.objects.filter(project_id=project_site_id).values_list('design',flat=True)
+        usability = Rating.objects.filter(project_id=project_site_id).values_list('usability',flat=True)
+        content = Rating.objects.filter(project_id=project_site_id).values_list('content',flat=True)
         totals_for_design=0
         totals_for_usability=0
         totals_for_content = 0
@@ -106,7 +108,7 @@ def project_site(request,project_site_id):
         project.design = totals_for_design
         project.usability = totals_for_usability
         project.content = totals_for_content
-        project.average_score = average_score
+        project.overall_rating = average_score
 
         project.save()
 
@@ -124,7 +126,7 @@ def project_site(request,project_site_id):
     else:
         form = RatesForm()
 
-    return render(request,"project_site.html",{"project":project,"profile":profile,"ratings":ratings,"form":form})
+    return render(request,"projects/project_site.html",{"project":project,"profile":profile,"rates":rates,"form":form})
 
 
 
