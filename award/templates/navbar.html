@@ -44,10 +44,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <form class="navbar-form" role="search" action="{% url 'search_results'%}">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search For Inspiration" name="project">
+                        <input type="text" class="form-control" placeholder="Search For Project" name="project">
                     </div>
                 </form>
             </ul>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <a href="{% url 'new-project' %}">
+                <button class="btn btn-primary">Pitch Your Project</button>
+            </a>
         </div>
         <!-- search form end -->
     </div>
