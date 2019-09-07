@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'tinymce',
     'registration',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
