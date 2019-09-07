@@ -13,3 +13,8 @@ class NewProjectForm(forms.ModelForm):
         # widgets = {
         #     'tags': forms.CheckboxSelectMultiple(),
         # }
+    
+class RatesForm(forms.ModelForm):
+    class Meta:
+        model=Rating
+        exclude=['average_score','profile','project']
