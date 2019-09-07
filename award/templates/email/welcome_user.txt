@@ -1,3 +1,8 @@
 Hello {{name}}
 
-Welcome to the Moringa tribune newsletter You will find the most exciting news about Moringa School
+Welcome to the Moringa Awards Site.
+Good to have you.Feel free to proceed and 
+create your profile,post a project 
+and rate other people's projects
+
+Enjoy
