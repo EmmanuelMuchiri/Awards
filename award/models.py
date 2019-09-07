@@ -33,6 +33,9 @@ class Project(models.Model):
     def print_all(cls):
         project = Project.objects.all()
         return project
+    
+    def save_project(self):
+        self.save()
 
     
 class Rating(models.Model):
