@@ -13,7 +13,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
-    
+    # function working
     def save_profile(self):
         self.save()
 
