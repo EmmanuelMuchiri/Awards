@@ -21,6 +21,10 @@ class Project(models.Model):
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
     project_image = models.ImageField(upload_to='projects/', blank=True)
+    design = models.IntegerField(blank=True,default=0)
+    usability = models.IntegerField(blank=True,default=0)
+    creativity = models.IntegerField(blank=True,default=0)
+    overall_score = models.IntegerField(blank=True,default=0)
 
     @classmethod
     def print_all(cls):
@@ -28,3 +32,10 @@ class Project(models.Model):
         return project
 
     
+class Rating(models.Model):
+    design = models.IntegerField(blank=True,default=0)
+    usability = models.IntegerField(blank=True,default=0)
+    creativity = models.IntegerField(blank=True,default=0)
+    overall_rating = models.IntegerField(blank=True,default=0)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
