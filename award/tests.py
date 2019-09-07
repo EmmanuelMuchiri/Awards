@@ -17,10 +17,10 @@ class ProjectClass(TestCase):
         self.assertTrue(isinstance(self.project,Project))
 
 #     #Testing Save method
-#     def test_save_image(self):
-#         self.image.save_image()
-#         images = Image.objects.all()
-#         self.assertTrue(len(images) > 0)
+    def test_save_project(self):
+        self.project.save_project()
+        projects = Project.objects.all()
+        self.assertTrue(len(projects) > 0)
 
 #     #Testing Update Method
 #     def test_update_caption(self):
