@@ -31,7 +31,7 @@ class Project(models.Model):
 
     @classmethod
     def print_all(cls):
-        project = Project.objects.all()
+        project = Project.objects.all().order_by('-pub_date')
         return project
     
     def save_project(self):

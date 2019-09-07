@@ -22,18 +22,12 @@ class ProjectClass(TestCase):
         projects = Project.objects.all()
         self.assertTrue(len(projects) > 0)
 
-#     #Testing Update Method
-#     def test_update_caption(self):
-#         self.image.save_image()
-#         self.image = Image.objects.get(pk = 1)
-#         self.image.update_caption('updated caption')
-#         self.updated_image = Image.objects.get(id = 1)
-#         self.assertEqual(self.updated_image.image_caption,"updated caption")
-
-#     #Testing Delete Method
-#     def test_delete_image(self):
-#         self.image.delete_image()
-#         self.assertTrue(len(Image.objects.all()) == 0)
+#     #Testing print all Method
+    def test_print_all(self):
+        self.project.print_all()
+        projects= Project.objects.all()
+        self.assertTrue((len(projects) > -1))
+#     
 
 class ProfileTestClass(TestCase):
     # Set up method
