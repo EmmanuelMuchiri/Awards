@@ -13,8 +13,13 @@ class NewProjectForm(forms.ModelForm):
         # widgets = {
         #     'tags': forms.CheckboxSelectMultiple(),
         # }
-    
+
 class RatesForm(forms.ModelForm):
     class Meta:
         model=Rating
         exclude=['average_score','profile','project']
+    
+
+class SubscriptionForm(forms.Form):
+    your_name = forms.CharField(label="Enter Your First Name",max_length=30)
+    email = forms.EmailField(label="Enter your Email Address")
