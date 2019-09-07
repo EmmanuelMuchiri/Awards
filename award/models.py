@@ -13,6 +13,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save_profile(self):
+        self.save()
 
 
 class Project(models.Model):
