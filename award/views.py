@@ -124,7 +124,7 @@ def project_site(request,project_site_id):
     else:
         form = RatesForm()
 
-    return render(request,"site.html",{"project":project,"profile":profile,"ratings":ratings,"form":form})
+    return render(request,"project_site.html",{"project":project,"profile":profile,"ratings":ratings,"form":form})
 
 
 
