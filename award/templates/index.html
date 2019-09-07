@@ -4,12 +4,12 @@
 <div class="container">
 
   <!-- Looping through news   -->
-  {% for awards_item in projects %}
+  {% for award_item in projects %}
 
     <!--Display news Article images  -->
     <div class="col-4">
-            <h2 class="text-center"><a href="{{awards_item.title}}">Projects </a></h2>
-            <h2>{{awards_item.post}} {{awards_item.owner}}</h2>   
+            <h2 class="text-center"><a href="{{award_item.title}}">Projects </a></h2>
+            <h2>{{award_item.post}} {{award_item.owner}}</h2>   
          </div>
 
   </div>
