@@ -31,13 +31,14 @@
           <div class="card-body">
             <a href="/project_site/{{project.id}}" style="color:black;text-decoration:none;">
               <h5 class="card-title" style="line-height:28px;">Title : {{project.title}}</h5>
+              <p class="card-text">Project Owner : {{project.owner}}</p>
+              <p class="card-text">Post Date : {{project.pub_date}}</p>
+              <p class="card-text"> Rating : {{project.design}}</p>
+              <p class="card-text"> Content : {{project.content}}</p>
+              <p class="card-text"> Usability : {{project.usability}}</p>
+              <p class="card-text"> Design : {{project.design}}</p>
+              <img src="{{project.profpic.url}}" class="img-fluid" alt="Project image">
             </a>
-            <p class="card-text"><span class="date">Project Owner : {{project.owner}}</span></p>
-            <p class="card-text"><span class="date">Post Date : {{project.pub_date}}</span></p>
-            <p class="card-text"><span class="date">Post Rating : {{project.design}}</span></p>
-            <p class="card-text"><span class="date">Post Content : {{project.content}}</span></p>
-            <p class="card-text"><span class="date">Post Usability : {{project.usability}}</span></p>
-            <p class="card-text"><span class="date">Post Design : {{project.design}}</span></p>
           </div>
         </div>
       </div>
