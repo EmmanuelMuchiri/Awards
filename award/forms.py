@@ -17,7 +17,7 @@ class NewProjectForm(forms.ModelForm):
 class RatesForm(forms.ModelForm):
     class Meta:
         model=Rating
-        exclude=['average_score','profile','project']
+        exclude=['overall_rating','profile','project']
     
 
 class SubscriptionForm(forms.Form):

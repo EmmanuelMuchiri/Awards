@@ -86,7 +86,7 @@
 {% endif %}
 
 
-<form action="/site/{{project.id}}" method="post" enctype="multipart/form-data" id="votes-form">
+<form action="/project_site/{{project.id}}" method="post" enctype="multipart/form-data" id="votes-form">
   {%csrf_token%}
 
   {% bootstrap_form form%}

@@ -116,7 +116,6 @@ def project_site(request,project_site_id):
         totals_for_design=0
         totals_for_usability=0
         totals_for_content = 0
-        print(design)
         for rate in design:
             totals_for_design+=rate
         print(totals_for_design)
@@ -136,7 +135,7 @@ def project_site(request,project_site_id):
         project.design = totals_for_design
         project.usability = totals_for_usability
         project.content = totals_for_content
-        project.overall_rating = average_score
+        project.average_score = average_score
 
         project.save()
 
