@@ -1,0 +1,14 @@
+body{
+    background-color: black;
+    color: white;
+}
+.card{
+    background-color: black;
+    border-color: crimson;
+    align-items: center
+}
+.card-body a{
+    color: white;
+    text-decoration: none;
+    align-items: center
+}
