@@ -1,0 +1,59 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'Projects' %}">Awards</a>
+        </div>
+
+        <!-- Adding a search form  -->
+        <div class="col-sm-4 col-md-4 navbar-right">
+        </div>
+        <div class="col-sm-6 col-md-6">
+            {% if user.is_authenticated %}
+            <ul>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+                            aria-expanded="false">Account
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{% url 'profile' %}">Profile</a>
+                            </li>
+                            <li>
+                                <a href="/accounts/password/change">Change Password</a>
+                            </li>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                </li>
+            </ul>
+            {% else %}
+            <li>
+                <a class='btn btn-default' href="/accounts/login">Login</a>
+            </li>
+
+            {% endif %}
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+            <ul class="nav navbar-nav navbar-right">
+                <form class="navbar-form" role="search" action="{% url 'search_results'%}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search For Project" name="project">
+                    </div>
+                </form>
+            </ul>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <a href="{% url 'new-project' %}">
+                <button class="btn btn-primary">Pitch Your Project</button>
+            </a>
+        </div>
+        <!-- search form end -->
+    </div>
+</nav>
